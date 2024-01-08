@@ -6,16 +6,11 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class JDBCUpdateTest {
+public class JDBCDeleteTest {
 	public static void main(String[] args) {
 		Connection conn = null;
+
 		Scanner sc = new Scanner(System.in);
-		System.out.println("수정할 번호 : ");
-		int id = sc.nextInt();
-		System.out.println("바뀔 제목 : ");
-		String title = sc.next();
-		System.out.println("바뀔 내용 : ");
-		String body = sc.next();
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -24,21 +19,21 @@ public class JDBCUpdateTest {
 			conn = DriverManager.getConnection(url, "root", "");
 			System.out.println("연결 성공!");
 
-			String sql = " UPDATE article " + " SET title = ?, body = ? " + " WHERE id = ? ";
+			System.out.println("삭제할 번호를 입력해주세요 : ");
+			int id = sc.nextInt();
+
+			String sql = " DELETE FROM article " + " WHERE id = ? ";
 
 			PreparedStatement pstm = null;
 
-			// 3. Query 준비
 			pstm = conn.prepareStatement(sql);
-			pstm.setString(1, title);
-			pstm.setString(2, body);
-			pstm.setInt(3, id);
-			// 4. Query 실행
+			pstm.setInt(1, id);
+
 			int res = pstm.executeUpdate();
 			if (res > 0) {
-				System.out.println("수정 성공");
+				System.out.println("삭제 성공");
 			} else {
-				System.out.println("수정 실패");
+				System.out.println("내용이 없습니다");
 			}
 
 		} catch (ClassNotFoundException e) {
