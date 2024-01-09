@@ -17,7 +17,7 @@ public class JDBCDetailTest {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+
 		System.out.println("찾을 번호를 말해주세요");
 		int setid = sc.nextInt();
 		Article findbyId = new Article(setid, null, null);
@@ -50,25 +50,19 @@ public class JDBCDetailTest {
 				Article article = new Article(id, regDate, updateDate, title, body);
 
 				articles.add(article);
-				
 
 			}
-			
-			if(findbyId.getTitle()==null) {
+
+			if (findbyId.getTitle() == null) {
 				System.out.println("쓰지않은 글이야");
 				return;
 			}
-			
+
 			System.out.println("번호 : " + findbyId.getId());
 			System.out.println("등록 날짜 : " + findbyId.getRegDate());
 			System.out.println("수정 날짜 : " + findbyId.getUpdateDate());
 			System.out.println("제목 : " + findbyId.getTitle());
 			System.out.println("내용 : " + findbyId.getBody());
-
-			
-			
-		
-		
 
 		} catch (ClassNotFoundException e) {
 			System.out.println("드라이버 로딩 실패");
