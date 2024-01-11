@@ -3,6 +3,7 @@ package com.KoreaIT.java.JDBCAM.service;
 import java.sql.Connection;
 
 import com.KoreaIT.java.JDBCAM.dao.MemberDao;
+import com.KoreaIT.java.JDBCAM.dto.Member;
 
 public class MemberService {
 
@@ -20,4 +21,8 @@ public class MemberService {
 		return memberDao.doJoin(loginId, loginPw, name);
 	}
 
-}F
+	public Member getMemberByLoginId(String loginId) {
+		return memberDao.getMemberByLoginId(loginId);
+	}
+
+}

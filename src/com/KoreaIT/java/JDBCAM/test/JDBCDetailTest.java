@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import com.KoreaIT.java.JDBCAM.Article;
+import com.KoreaIT.java.JDBCAM.dto.Article;
 
 public class JDBCDetailTest {
 	public static void main(String[] args) {
